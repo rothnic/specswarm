@@ -13,25 +13,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-#### OpenCode Plugin Implementation
-- **New Directory**: `.opencode-plugin/` containing OpenCode-specific plugin configuration
-- **New File**: `plugin.json` - OpenCode plugin metadata with version 3.6.0
-- **New File**: `plugin.ts` - TypeScript plugin implementation for OpenCode SDK
-- **New File**: `README.md` - OpenCode-specific setup and usage documentation
+#### OpenCode Command Integration
+- **New Directory**: `.opencode/` containing OpenCode command configuration
+- **New Directory**: `.opencode/command/` with all 32 SpecSwarm commands
+- **New File**: `.opencode/README.md` - OpenCode-specific setup and usage documentation
+- Commands are installed as markdown files following OpenCode's native command format
 
-#### Plugin Features (OpenCode)
-- **Command Loading**: Dynamically loads all 32 commands from `commands/*.md`
-- **Skill Loading**: Loads all 5 natural language skills from `skills/*/SKILL.md`
-- **Event Handling**: Responds to OpenCode session events (start, idle, message, end)
-- **Session Management**: Tracks session state for workspace context
+#### How It Works
+- Commands are copied from `commands/` to `.opencode/command/` with `specswarm:` prefix
+- Example: `commands/build.md` → `.opencode/command/specswarm:build.md`
+- Uses OpenCode's native command system (no custom plugin required)
 
 ### Changed
 
 #### Documentation Updates
 - **README.md**: Updated to document dual-platform support (Claude Code and OpenCode)
-- **README.md**: Added OpenCode installation instructions
+- **README.md**: Added correct OpenCode installation instructions
 - **README.md**: Added Platform Support comparison table
-- **README.md**: Updated documentation links to include OpenCode setup
 
 #### Version Updates
 - **Version**: 3.5.0 → 3.6.0
@@ -39,21 +37,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Technical Details
 
-**OpenCode Plugin Architecture**:
-- Uses `@opencode-ai/plugin` TypeScript SDK
-- Exposes commands via standardized command interface
-- Exposes skills with frontmatter metadata parsing
-- Event-driven architecture for session lifecycle
-- Shared command and skill definitions with Claude Code
+**OpenCode Integration**:
+- Uses OpenCode's native `.opencode/command/` directory for commands
+- Each command is a markdown file with YAML frontmatter
+- Commands use the same logic as Claude Code version
+- No custom TypeScript plugin required
 
 **Shared Resources** (used by both platforms):
-- `commands/*.md` - Command definitions
-- `skills/*/SKILL.md` - Skill definitions
-- `.specswarm/` - Project configuration
+- Command logic and workflows
+- Project configuration (`.specswarm/`)
 
 **Benefits**:
 - ✅ Same functionality on both platforms
-- ✅ Single codebase maintenance
+- ✅ Native OpenCode command system
 - ✅ User choice of AI assistant
 - ✅ Consistent workflows across platforms
 

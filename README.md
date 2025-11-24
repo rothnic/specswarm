@@ -40,28 +40,32 @@ Restart Claude Code to activate the plugin.
 
 ### OpenCode
 
-```bash
-# Install the plugin
-opencode plugin install specswarm
-```
+1. **Install OpenCode CLI** (if not already installed):
+   ```bash
+   npm install -g opencode-ai
+   ```
 
-Or add to your `.opencode/config.json`:
+2. **Clone or copy SpecSwarm to your project:**
+   ```bash
+   # Option A: Clone the repository
+   git clone https://github.com/MartyBonacci/specswarm.git
+   
+   # Option B: Copy the .opencode folder to your project
+   cp -r specswarm/.opencode your-project/
+   ```
 
-```json
-{
-  "plugins": [
-    {
-      "name": "specswarm",
-      "source": "github:MartyBonacci/specswarm",
-      "enabled": true
-    }
-  ]
-}
-```
+3. **Start OpenCode in your project:**
+   ```bash
+   cd your-project
+   opencode
+   ```
 
-Restart OpenCode to activate the plugin.
+4. **Initialize SpecSwarm:**
+   ```
+   /specswarm:init
+   ```
 
-See [.opencode-plugin/README.md](.opencode-plugin/README.md) for detailed OpenCode setup.
+See [.opencode/README.md](.opencode/README.md) for detailed OpenCode setup.
 
 ---
 
@@ -460,16 +464,14 @@ SpecSwarm supports two AI coding assistant platforms:
 
 | Feature | Claude Code | OpenCode |
 |---------|-------------|----------|
-| Plugin Directory | `.claude-plugin/` | `.opencode-plugin/` |
+| Config Directory | `.claude-plugin/` | `.opencode/` |
+| Commands Location | `commands/` | `.opencode/command/` |
 | Commands | ✅ 32 commands | ✅ 32 commands |
-| Skills | ✅ 5 core skills | ✅ 5 core skills |
 | Natural Language | ✅ Supported | ✅ Supported |
-| Event Handling | Automatic | SDK-based |
-| Session Management | Built-in | Plugin-controlled |
+| Installation | Marketplace | npm + copy files |
 
 Both platforms use the same:
-- Command definitions (`commands/*.md`)
-- Skill definitions (`skills/*/SKILL.md`)
+- Command logic and workflows
 - Project configuration (`.specswarm/`)
 
 ---

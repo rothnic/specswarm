@@ -11,7 +11,7 @@ Complete documentation for the SpecSwarm plugin (supports Claude Code and OpenCo
 ### Detailed Guides
 - **[Setup Guide](./SETUP.md)** - Technical setup, configuration, and troubleshooting
 - **[Features Deep-Dive](./FEATURES.md)** - Technical documentation for advanced features
-- **[OpenCode Setup](../.opencode-plugin/README.md)** - OpenCode-specific installation and usage
+- **[OpenCode Setup](../.opencode/README.md)** - OpenCode-specific installation and usage
 
 ---
 
