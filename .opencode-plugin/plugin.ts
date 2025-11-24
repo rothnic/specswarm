@@ -15,7 +15,7 @@
 
 import path from "node:path";
 import type { Plugin } from "@opencode-ai/plugin";
-import { readFileSync, existsSync } from "node:fs";
+import { readFileSync, existsSync, readdirSync } from "node:fs";
 
 /**
  * Helper to log messages with consistent formatting
@@ -37,7 +37,7 @@ function loadCommands(pluginDir: string): Map<string, string> {
     return commands;
   }
 
-  const files = require("fs").readdirSync(commandsDir);
+  const files = readdirSync(commandsDir);
   for (const file of files) {
     if (file.endsWith(".md")) {
       const commandName = file.replace(".md", "");
@@ -63,7 +63,7 @@ function loadSkills(pluginDir: string): Map<string, string> {
     return skills;
   }
 
-  const dirs = require("fs").readdirSync(skillsDir);
+  const dirs = readdirSync(skillsDir);
   for (const dir of dirs) {
     const skillFile = path.join(skillsDir, dir, "SKILL.md");
     if (existsSync(skillFile)) {
