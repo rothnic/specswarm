@@ -5,6 +5,60 @@ All notable changes to SpecSwarm and SpecSwarm plugins will be documented in thi
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.6.0] - 2025-11-24
+
+### 🌐 OpenCode Runtime Support
+
+**SpecSwarm now supports both Claude Code and OpenCode runtimes**, enabling developers to use their preferred AI coding assistant.
+
+### Added
+
+#### OpenCode Plugin Implementation
+- **New Directory**: `.opencode-plugin/` containing OpenCode-specific plugin configuration
+- **New File**: `plugin.json` - OpenCode plugin metadata with version 3.6.0
+- **New File**: `plugin.ts` - TypeScript plugin implementation for OpenCode SDK
+- **New File**: `README.md` - OpenCode-specific setup and usage documentation
+
+#### Plugin Features (OpenCode)
+- **Command Loading**: Dynamically loads all 32 commands from `commands/*.md`
+- **Skill Loading**: Loads all 5 natural language skills from `skills/*/SKILL.md`
+- **Event Handling**: Responds to OpenCode session events (start, idle, message, end)
+- **Session Management**: Tracks session state for workspace context
+
+### Changed
+
+#### Documentation Updates
+- **README.md**: Updated to document dual-platform support (Claude Code and OpenCode)
+- **README.md**: Added OpenCode installation instructions
+- **README.md**: Added Platform Support comparison table
+- **README.md**: Updated documentation links to include OpenCode setup
+
+#### Version Updates
+- **Version**: 3.5.0 → 3.6.0
+- **Keywords**: Added "opencode" and "dual-platform" keywords
+
+### Technical Details
+
+**OpenCode Plugin Architecture**:
+- Uses `@opencode-ai/plugin` TypeScript SDK
+- Exposes commands via standardized command interface
+- Exposes skills with frontmatter metadata parsing
+- Event-driven architecture for session lifecycle
+- Shared command and skill definitions with Claude Code
+
+**Shared Resources** (used by both platforms):
+- `commands/*.md` - Command definitions
+- `skills/*/SKILL.md` - Skill definitions
+- `.specswarm/` - Project configuration
+
+**Benefits**:
+- ✅ Same functionality on both platforms
+- ✅ Single codebase maintenance
+- ✅ User choice of AI assistant
+- ✅ Consistent workflows across platforms
+
+---
+
 ## [3.3.5] - 2025-11-18
 
 ### 🔥 EXTREMELY Broad Triggers - Fixed v3.3.4 False Negatives
