@@ -40,30 +40,33 @@ Restart Claude Code to activate the plugin.
 
 ### OpenCode
 
-1. **Install OpenCode CLI** (if not already installed):
-   ```bash
-   npm install -g opencode-ai
-   ```
+**Option A: Global Installation (Recommended)**
 
-2. **Clone or copy SpecSwarm to your project:**
-   ```bash
-   # Option A: Clone the repository
-   git clone https://github.com/MartyBonacci/specswarm.git
-   
-   # Option B: Copy the .opencode folder to your project
-   cp -r specswarm/.opencode your-project/
-   ```
+```bash
+# 1. Clone SpecSwarm globally
+git clone https://github.com/MartyBonacci/specswarm.git ~/.specswarm
 
-3. **Start OpenCode in your project:**
-   ```bash
-   cd your-project
-   opencode
-   ```
+# 2. Add to your shell profile (~/.zshrc or ~/.bashrc)
+export OPENCODE_CONFIG_DIR="$HOME/.specswarm/.opencode"
 
-4. **Initialize SpecSwarm:**
-   ```
-   /specswarm:init
-   ```
+# 3. Reload shell and start OpenCode in any project
+source ~/.zshrc
+cd your-project
+opencode
+/specswarm:init
+```
+
+**Option B: Per-Project Installation**
+
+```bash
+# Copy to your project
+cp -r /path/to/specswarm/.opencode your-project/
+cp -r /path/to/specswarm/commands your-project/
+
+cd your-project
+opencode
+/specswarm:init
+```
 
 See [.opencode/README.md](.opencode/README.md) for detailed OpenCode setup.
 
